@@ -27,6 +27,7 @@ public class ParkingLot {
     //Print parking lot status
     public void printStatus() {
         System.out.printf("Slot No. Registration No Colour \n");
+        // TODO try with stream
         for (Map.Entry<Integer, Car> entry : parkingLot.entrySet())
         {
             Car v = entry.getValue();
@@ -62,21 +63,40 @@ public class ParkingLot {
 
     // Handle government regulation: get slot number in which a car with a given registration number is parked
     public int getSlotNumberOfARegPlate(String regPlate) {
-        //TODO empty method
-        return 0;
+        int slotNumber = 0;
+        for (Map.Entry<Integer, Car> entry : parkingLot.entrySet())
+        {
+            if (entry.getValue().getRegPlate().equals(regPlate)) {
+                slotNumber = entry.getKey().intValue();
+                break;
+            }
+        }
+        return slotNumber;
     }
 
     // Handle government regulation: get slot numbers of all slots where a car of a particular colour is parked.
     public List<Integer> getListOfSlotNumbersOfColour(String colour) {
         List<Integer> listOfSlotNumbers = new ArrayList<>();
-        //TODO empty method
+        // TODO try with stream
+        for (Map.Entry<Integer, Car> entry : parkingLot.entrySet())
+        {
+            if (entry.getValue().getColour().equals(colour)) {
+                listOfSlotNumbers.add(entry.getKey().intValue());
+            }
+        }
         return listOfSlotNumbers;
     }
 
     // Handle government regulation: get registration numbers of all cars of a particular colour
     public List<String> getListOfRegPlatesOfColour(String colour) {
         List<String> listOfRegPlates = new ArrayList<>();
-        //TODO empty method
+        // TODO try with stream
+        for (Map.Entry<Integer, Car> entry : parkingLot.entrySet())
+        {
+            if (entry.getValue().getColour().equals(colour)) {
+                listOfRegPlates.add(entry.getValue().getRegPlate());
+            }
+        }
         return listOfRegPlates;
     }
 

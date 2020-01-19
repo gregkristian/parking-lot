@@ -87,7 +87,7 @@ public class ParkingLotTest {
     }
 
     /**
-     * Test goverment-related information finder
+     * Test goverment-related information finder. TODO add test for invalid values?
      */
     @Test
     public void testInformationFinder() {
