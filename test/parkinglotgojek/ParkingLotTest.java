@@ -2,6 +2,8 @@ package parkinglotgojek;
 
 import static org.junit.Assert.*;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 import org.junit.Test;
@@ -39,7 +41,7 @@ public class ParkingLotTest {
 
         // Define and construct 4 cars
         Car[] cars = new Car[4];
-        String[] regPlates = {"KA-1111", "KB-2222", "KC-3333", "KD-ayanti"};
+        String[] regPlates = {"KA-1111", "KB-2222", "KC-3333", "KD-4444"};
         String[] colours = {"Wonderful White", "Bloody Blue", "Gentle Green", "Radiant Red"};
 
         for (int i = 0; i < 4; i++) {
@@ -84,7 +86,42 @@ public class ParkingLotTest {
         assertEquals("Parking slot 3 should be empty", null, lotMap.get(3));
     }
 
-    // TODO test method for goverment-related information finder
+    /**
+     * Test goverment-related information finder
+     */
+    @Test
+    public void testInformationFinder() {
+        // Construct a lot with size 7
+        ParkingLot lot = new ParkingLot(7);
+
+        // Construct 7 cars and park it
+        Car[] cars = new Car[7];
+        String[] regPlates = {"KA-01", "KB-02", "KC-03", "KD-04", "KE-05", "KF-06", "KG-07"};
+        String[] colours = {"White", "Blue", "Green", "White", "Blue", "Green", "White"};
+
+        for (int i = 0; i < 7; i++) {
+            cars[i] = new Car(regPlates[i], colours[i]);
+            lot.park(cars[i]);
+        }
+
+        // Get slot number of car KD-04. Assert the result
+        int actualSlot = lot.getSlotNumberOfARegPlate(regPlates[3]);
+        assertEquals("Car KD-04 not parked in expected slot", 4, actualSlot);
+
+        // Get list of slot numbers of white and green car. Assert the result
+        List<Integer> expSlots = Arrays.asList(1, 4, 7);
+        List<Integer> actualSlots = lot.getListOfSlotNumbersOfColour("White");
+        assertEquals("Slot numbers don't match for white cars", expSlots, actualSlots);
+
+        expSlots = Arrays.asList(3, 6);
+        actualSlots = lot.getListOfSlotNumbersOfColour("Green");
+        assertEquals("Slot numbers don't match for green cars", expSlots, actualSlots);
+
+        // Get list of registration plates of blue car. Assert the result
+        List<String> expRegPlates = Arrays.asList("KB-02", "KE-05");
+        List<String> actualRegPlates = lot.getListOfRegPlatesOfColour("Blue");
+        assertEquals("Reg plates don't match for blue cars", expRegPlates, actualRegPlates);
+    }
 
     // TODO test printStatus()
 }

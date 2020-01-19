@@ -1,6 +1,8 @@
 package parkinglotgojek;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -34,7 +36,7 @@ public class ParkingLot {
         }
     }
 
-    //Park new car
+    //Park one new car
     public void park(Car newCar) {
         boolean isNewCarAdded = false;
         for (Map.Entry<Integer, Car> entry : parkingLot.entrySet())
@@ -52,10 +54,30 @@ public class ParkingLot {
         }
     }
 
-    //Handle the leaving car
+    //Handle one leaving car
     public void leave(int slotNo) {
         parkingLot.put(Integer.valueOf(slotNo), null);
         System.out.printf("Slot number %d is free\n", slotNo);
+    }
+
+    // Handle government regulation: get slot number in which a car with a given registration number is parked
+    public int getSlotNumberOfARegPlate(String regPlate) {
+        //TODO empty method
+        return 0;
+    }
+
+    // Handle government regulation: get slot numbers of all slots where a car of a particular colour is parked.
+    public List<Integer> getListOfSlotNumbersOfColour(String colour) {
+        List<Integer> listOfSlotNumbers = new ArrayList<>();
+        //TODO empty method
+        return listOfSlotNumbers;
+    }
+
+    // Handle government regulation: get registration numbers of all cars of a particular colour
+    public List<String> getListOfRegPlatesOfColour(String colour) {
+        List<String> listOfRegPlates = new ArrayList<>();
+        //TODO empty method
+        return listOfRegPlates;
     }
 
     //Only used for testing
