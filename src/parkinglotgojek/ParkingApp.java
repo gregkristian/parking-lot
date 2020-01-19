@@ -29,6 +29,13 @@ public class ParkingApp {
                 else if (values[0].equals("status")) {
                     parkingLot.printStatus();
                 }
+                else if (values[0].equals("park")) {
+                    Car newCar = new Car(values[1], values[2]);
+                    parkingLot.park(newCar);
+                }
+                else if (values[0].equals("leave")) {
+                    parkingLot.leave(Integer.parseInt(values[1]));
+                }
                 else if (values[0].equals("exit")) {
                     keepRun = false;
                 }
