@@ -26,7 +26,7 @@ public class ParkingLot {
 
     //Print parking lot status
     public void printStatus() {
-        System.out.printf("Slot No. Registration No Colour \n");
+        System.out.printf("Slot No. Registration No Colour\n");
         // TODO try with stream
         for (Map.Entry<Integer, Car> entry : parkingLot.entrySet())
         {
