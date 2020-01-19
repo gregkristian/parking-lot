@@ -4,9 +4,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Parking lot object
+ * Represents one parking lot
  *
- * @author Gregorius Purwidi
+ * @author Gregorius Kristian Purwidi
  */
 public class ParkingLot {
 
@@ -15,6 +15,7 @@ public class ParkingLot {
     // Constructor
     public ParkingLot(int size) {
         this.parkingLot = new HashMap<Integer, Car>();
+        //Lot number starts from 1
         for (int i = 1; i <= size; i++) {
             parkingLot.put(Integer.valueOf(i), null);
         }
@@ -55,5 +56,10 @@ public class ParkingLot {
     public void leave(int slotNo) {
         parkingLot.put(Integer.valueOf(slotNo), null);
         System.out.printf("Slot number %d is free\n", slotNo);
+    }
+
+    //Only used for testing
+    public Map<Integer, Car> getParkingLotMap() {
+        return parkingLot;
     }
 }

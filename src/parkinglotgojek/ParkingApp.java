@@ -5,7 +5,7 @@ import java.util.Scanner;
 /**
  * Application to manage parking lot
  *
- * @author Gregorius Purwidi
+ * @author Gregorius Kristian Purwidi
  */
 public class ParkingApp {
 

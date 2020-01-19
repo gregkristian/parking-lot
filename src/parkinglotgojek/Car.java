@@ -3,7 +3,7 @@ package parkinglotgojek;
 /**
  * Represents one car
  *
- * @author Gregorius Purwidi
+ * @author Gregorius Kristian Purwidi
  */
 public class Car {
 	private String regPlate; // Registration plate

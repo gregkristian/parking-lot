@@ -1,9 +1,13 @@
 package parkinglotgojek;
 
 import static org.junit.Assert.*;
-
 import org.junit.Test;
 
+/**
+ * Test Car class
+ *
+ * @author Gregorius Kristian Purwidi
+ */
 public class CarTest {
 
     /**
@@ -12,16 +16,16 @@ public class CarTest {
     @Test
     public void testCreateCars() {
         // Define two cars
-        String[] regPlate = {"KA-1111", "KB-2222"};
-        String[] colour = {"White", "Blue"};
+        String[] regPlates = {"KA-1111", "KB-2222"};
+        String[] colours = {"Shocking Pink", "Amazing Amber"};
 
         // Construct two cars and assert the result
         for (int i=0; i<2; i++) {
-            Car car = new Car(regPlate[i], colour[i]);
+            Car car = new Car(regPlates[i], colours[i]);
 
             //TODO specify which car
-            assertEquals("Car registration plate not as expected", regPlate[i], car.getRegPlate());
-            assertEquals("Car colour not as expected", colour[i], car.getColour());
+            assertEquals("Car registration plate not as expected", regPlates[i], car.getRegPlate());
+            assertEquals("Car colour not as expected", colours[i], car.getColour());
         }
     }
 
