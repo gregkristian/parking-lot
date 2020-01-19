@@ -28,7 +28,7 @@ public class ParkingLot {
         {
             Car v = entry.getValue();
             if (v != null) {
-                System.out.printf("%d %s %s\n", entry.getKey(), v.getRegPlate(), v.getColor());
+                System.out.printf("%d %s %s\n", entry.getKey(), v.getRegPlate(), v.getColour());
             }
         }
     }

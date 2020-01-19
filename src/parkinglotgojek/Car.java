@@ -6,19 +6,20 @@ package parkinglotgojek;
  * @author Gregorius Purwidi
  */
 public class Car {
-	private String regPlate;
-	private String color;
+	private String regPlate; // Registration plate
+	private String colour;
 
-	public Car(String regPlate, String color) {
+	public Car(String regPlate, String colour) {
+	    //TODO handle invalid args?
 		this.regPlate = regPlate;
-		this.color = color;
+		this.colour = colour;
 	}
 
 	public String getRegPlate() {
 		return regPlate;
 	}
 
-	public String getColor() {
-		return color;
+	public String getColour() {
+		return colour;
 	}
 }

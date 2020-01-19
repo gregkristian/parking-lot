@@ -20,7 +20,7 @@ public class ParkingApp {
 
         try (Scanner in = new Scanner(System.in)) {
             while (keepRun) {
-                String[] values = in.nextLine().split("\\s+");;
+                String[] values = in.nextLine().split("\\s+");
 
                 if (values[0].equals("create_parking_lot")) {
                     parkingLot = new ParkingLot(Integer.parseInt(values[1])); //TODO handle invalid args
