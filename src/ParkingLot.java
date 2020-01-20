@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * Represents one parking lot
@@ -25,14 +26,11 @@ public class ParkingLot {
     //Print parking lot status
     public void printStatus() {
         System.out.printf("Slot No. Registration No Colour\n");
-        // TODO try with stream
-        for (Map.Entry<Integer, Car> entry : parkingLot.entrySet())
-        {
-            Car v = entry.getValue();
-            if (v != null) {
-                System.out.printf("%d %s %s\n", entry.getKey(), v.getRegPlate(), v.getColour());
-            }
-        }
+
+        parkingLot.entrySet().stream()
+                .filter(e -> (e.getValue() != null))
+                .forEach(e -> System.out.printf("%d %s %s\n", e.getKey(), e.getValue().getRegPlate(), e.getValue().getColour()));
+
     }
 
     //Park one new car
@@ -81,33 +79,30 @@ public class ParkingLot {
 
     // Handle government regulation: get slot numbers of all slots where a car of a particular colour is parked.
     public List<Integer> getListOfSlotNumbersOfColour(String colour) {
-        List<Integer> listOfSlotNumbers = new ArrayList<>();
-        // TODO try with stream
-        for (Map.Entry<Integer, Car> entry : parkingLot.entrySet())
-        {
-            if (entry.getValue().getColour().equals(colour)) {
-                listOfSlotNumbers.add(entry.getKey().intValue());
-            }
-        }
+        List<Integer> listOfSlotNumbers = parkingLot.entrySet().stream()
+                .filter(e -> e.getValue().getColour().equals(colour))
+                .map(e -> e.getKey().intValue())
+                .collect(Collectors.toList());
+
         System.out.println(listOfSlotNumbers.toString()
                 .replace("[", "")
                 .replace("]", ""));
+
         return listOfSlotNumbers;
     }
 
     // Handle government regulation: get registration numbers of all cars of a particular colour
     public List<String> getListOfRegPlatesOfColour(String colour) {
-        List<String> listOfRegPlates = new ArrayList<>();
-        // TODO try with stream
-        for (Map.Entry<Integer, Car> entry : parkingLot.entrySet())
-        {
-            if (entry.getValue().getColour().equals(colour)) {
-                listOfRegPlates.add(entry.getValue().getRegPlate());
-            }
-        }
+
+        List<String> listOfRegPlates = parkingLot.entrySet().stream()
+                .filter(e -> e.getValue().getColour().equals(colour))
+                .map(e -> e.getValue().getRegPlate())
+                .collect(Collectors.toList());
+
         System.out.println(listOfRegPlates.toString()
                 .replace("[", "")
                 .replace("]", ""));
+
         return listOfRegPlates;
     }
 

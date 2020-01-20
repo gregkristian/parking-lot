@@ -57,7 +57,6 @@ public class ParkingAppTest {
         }
 
         //Assert output
-        //TODO there must be a better way than this
         try (BufferedReader br = new BufferedReader(new FileReader(outputFile))) {
             int i = 0;
             String expected;
