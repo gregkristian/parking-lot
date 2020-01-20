@@ -19,32 +19,33 @@ import org.junit.Test;
  */
 public class ParkingAppTest {
 
-//    /**
-//     * @throws java.lang.Exception
-//     */
-//    @Before
-//    public void setUp() throws Exception {
-//    }
-//
-//    /**
-//     * @throws java.lang.Exception
-//     */
-//    @After
-//    public void tearDown() throws Exception {
-//    }
+    private final PrintStream originalOut = System.out;
+    private ByteArrayOutputStream outStream = new ByteArrayOutputStream();
+
+    /**
+     * @throws java.lang.Exception
+     */
+    @Before
+    public void setUp() throws Exception {
+        System.setOut(new PrintStream(outStream));
+    }
+
+    /**
+     * @throws java.lang.Exception
+     */
+    @After
+    public void tearDown() throws Exception {
+        System.setOut(originalOut);
+    }
 
     /**
      * Test method for {@link parkinglotgojek.ParkingApp#main(java.lang.String[])}.
      */
     @Test
     public void testMain() {
-        final PrintStream originalOut = System.out; // Backup
+
         String inputFile = "test\\test_commands.txt";
         String outputFile = "test\\expected_output.txt";
-
-        // Set System.out
-        ByteArrayOutputStream outStream = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outStream));
 
         boolean keepRun = true;
 
@@ -70,9 +71,6 @@ public class ParkingAppTest {
         } catch(IOException e) {
             fail("IO exception");
         }
-
-        // Restore system.out
-        System.setOut(originalOut);
     }
 
 }

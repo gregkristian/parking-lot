@@ -30,7 +30,9 @@ public class CarTest {
     }
 
     /**
-     * Test construction of Car object with invalid colour. There is no format requirement on registration plate so it won't be tested
+     * Test construction of Car object with unusual arguments.
+     * There is no format requirement on number plates and colour (colour could be hex, for example),
+     * so Car instance would be constructed as it is
      */
     @Test
     public void testCreateCarsWithInvalidColour() {
@@ -43,6 +45,6 @@ public class CarTest {
 
         // Assert that car object is created, but colour should be null
         assertEquals("Car registration plate not as expected", regPlate, car.getRegPlate());
-        assertEquals("Car colour not as expected", null, car.getColour());
+        assertEquals("Car colour not as expected", colour, car.getColour());
     }
 }

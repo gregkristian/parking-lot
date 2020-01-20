@@ -64,13 +64,20 @@ public class ParkingLot {
     // Handle government regulation: get slot number in which a car with a given registration number is parked
     public int getSlotNumberOfARegPlate(String regPlate) {
         int slotNumber = 0;
+        boolean carFound = false;
         for (Map.Entry<Integer, Car> entry : parkingLot.entrySet())
         {
             if (entry.getValue().getRegPlate().equals(regPlate)) {
                 slotNumber = entry.getKey().intValue();
+                carFound = true;
+                System.out.println(slotNumber);
                 break;
             }
         }
+        if (!carFound) {
+            System.out.println("Not found");
+        }
+
         return slotNumber;
     }
 
@@ -84,6 +91,9 @@ public class ParkingLot {
                 listOfSlotNumbers.add(entry.getKey().intValue());
             }
         }
+        System.out.println(listOfSlotNumbers.toString()
+                .replace("[", "")
+                .replace("]", ""));
         return listOfSlotNumbers;
     }
 
@@ -97,6 +107,9 @@ public class ParkingLot {
                 listOfRegPlates.add(entry.getValue().getRegPlate());
             }
         }
+        System.out.println(listOfRegPlates.toString()
+                .replace("[", "")
+                .replace("]", ""));
         return listOfRegPlates;
     }
 
