@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+CWD=$(pwd)
+
+BIN="$CWD/bin/"
+FILE1="$CWD/src/ParkingLot.java"
+FILE2="$CWD/src/Car.java"
+FILE3="$CWD/src/ParkingApp.java"
+FILE4="$CWD/test/ParkingLotTest.java"
+FILE5="$CWD/test/CarTest.java"
+FILE6="$CWD/test/ParkingAppTest.java"
+
+# Check required JUnit lib
+#JUNIT_JAR=remotecontent?filepath=junit%2Fjunit%2F4.13%2Fjunit-4.13.jar
+JUNIT_JAR=junit.jar
+if [ ! -f "$JUNIT_JAR" ]; then
+    wget -O $JUNIT_JAR https://search.maven.org/remotecontent?filepath=junit/junit/4.13/junit-4.13.jar
+fi
+
+#HAMCREST_JAR=remotecontent?filepath=org%2Fhamcrest%2Fhamcrest%2F2.2%2Fhamcrest-2.2.jar
+HAMCREST_JAR=hamcrest.jar
+if [ ! -f "$HAMCREST_JAR" ]; then
+    wget -O $HAMCREST_JAR https://search.maven.org/remotecontent?filepath=org/hamcrest/hamcrest/2.2/hamcrest-2.2.jar
+fi
+
+# Compile source and test
+javac -cp $JUNIT_JAR -d $BIN $FILE1 $FILE2 $FILE3 $FILE4 $FILE5 $FILE6
+
+# Run JUnit
+java -cp $BIN:$JUNIT_JAR:$HAMCREST_JAR org.junit.runner.JUnitCore CarTest ParkingLotTest ParkingAppTest
+

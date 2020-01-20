@@ -42,8 +42,8 @@ public class ParkingAppTest {
     @Test
     public void testMain() {
 
-        String inputFile = "test\\test_commands.txt";
-        String outputFile = "test\\expected_output.txt";
+        String inputFile = "test/test_commands.txt";
+        String outputFile = "test/expected_output.txt";
 
         boolean keepRun = true;
 

@@ -1,5 +1,3 @@
-package parkinglotgojek;
-
 /**
  * Represents one car
  *

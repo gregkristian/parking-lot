@@ -1,5 +1,3 @@
-package parkinglotgojek;
-
 import java.util.Scanner;
 
 /**
