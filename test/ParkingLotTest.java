@@ -85,7 +85,7 @@ public class ParkingLotTest {
     }
 
     /**
-     * Test goverment-related information finder. TODO add test for invalid values?
+     * Test goverment-related information finder.
      */
     @Test
     public void testInformationFinder() {
@@ -120,6 +120,4 @@ public class ParkingLotTest {
         List<String> actualRegPlates = lot.getListOfRegPlatesOfColour("Blue");
         assertEquals("Reg plates don't match for blue cars", expRegPlates, actualRegPlates);
     }
-
-    // TODO test printStatus()
 }

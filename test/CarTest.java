@@ -21,7 +21,6 @@ public class CarTest {
         for (int i=0; i<2; i++) {
             Car car = new Car(regPlates[i], colours[i]);
 
-            //TODO specify which car
             assertEquals("Car registration plate not as expected", regPlates[i], car.getRegPlate());
             assertEquals("Car colour not as expected", colours[i], car.getColour());
         }

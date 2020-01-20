@@ -1,3 +1,8 @@
+import static org.junit.Assert.fail;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Scanner;
 
 /**
@@ -14,16 +19,26 @@ public class ParkingApp {
     public static void main(String[] args) {
         boolean keepRun = true;
 
-        System.out.println("Hello..."); //TODO rm this
-
-        try (Scanner in = new Scanner(System.in)) {
-            //Read stdin until exit
-            while (keepRun) {
-                keepRun = runCommand(in.nextLine());
+        // A file name is passed as argument
+        if (args.length > 0) {
+            try (BufferedReader br = new BufferedReader(new FileReader(args[0]))) {
+                String command;
+                while ((command = br.readLine()) != null) {
+                    keepRun = ParkingApp.runCommand(command);
+                }
+            } catch(IOException e) {
+                // Do nothing. Exit
             }
-        } // TODO add catch?
-
-        System.out.println("Exiting..."); //TODO rm this
+        } else { // No args, get stdin
+            try (Scanner in = new Scanner(System.in)) {
+                //Read stdin until exit
+                while (keepRun) {
+                    keepRun = runCommand(in.nextLine());
+                }
+            } catch(Exception e) {
+                // Do nothing. Exit
+            }
+        }
     }
 
     public static boolean runCommand(String command) {
@@ -32,7 +47,7 @@ public class ParkingApp {
 
         switch (values[0]) {
             case "create_parking_lot":
-                parkingLot = new ParkingLot(Integer.parseInt(values[1])); //TODO handle invalid args
+                parkingLot = new ParkingLot(Integer.parseInt(values[1]));
                 break;
             case "status":
                 parkingLot.printStatus();

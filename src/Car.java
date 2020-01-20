@@ -8,7 +8,6 @@ public class Car {
     private String colour;
 
     public Car(String regPlate, String colour) {
-        //TODO handle invalid args?
         this.regPlate = regPlate;
         this.colour = colour;
     }

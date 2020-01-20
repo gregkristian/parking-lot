@@ -3,5 +3,5 @@
 CWD=$(pwd)
 BIN="$CWD/bin/"
 
-java -cp $BIN ParkingApp
+java -cp $BIN ParkingApp $1
 
